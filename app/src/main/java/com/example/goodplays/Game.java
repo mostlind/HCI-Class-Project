@@ -44,8 +44,18 @@ public class Game {
         this.rating = rating;
     }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    public void progressStatus() {
+        switch (this.status) {
+            case Queued:
+                this.status = Status.PlayingNow;
+                return;
+            case PlayingNow:
+                this.status = Status.Played;
+                return;
+            case Played:
+                this.status =  Status.Played;
+        }
+
     }
 
 

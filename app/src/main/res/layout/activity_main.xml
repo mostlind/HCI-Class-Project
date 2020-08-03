@@ -13,21 +13,58 @@
         tools:context=".MainActivity">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/nowPlayingHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
+            android:text="Now Playing"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:orientation="vertical"
-            android:id="@+id/gameList"
+            android:id="@+id/nowPlayingLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView" />
+            app:layout_constraintTop_toBottomOf="@id/nowPlayingHeader" />
+
+        <TextView
+            android:id="@+id/queueHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Queue"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nowPlayingLinearLayout" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/queueLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/queueHeader" />
+
+        <TextView
+            android:id="@+id/playedHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Played"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/queueLinearLayout" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/playedLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/playedHeader" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
