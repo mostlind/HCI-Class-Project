@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gameCard"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" android:background="@color/cardBackground">
+    android:layout_height="match_parent"
+    android:background="@color/cardBackground">
 
     <TextView
-        android:id="@+id/gameDescription2"
+        android:id="@+id/gameAddedDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:text="Added Aug 5, 2020"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@android:color/secondary_text_dark"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintStart_toEndOf="@+id/imageView2" />
+        app:layout_constraintBottom_toBottomOf="@+id/gameCardImage"
+        app:layout_constraintStart_toEndOf="@+id/gameCardImage" />
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="80dp"
-        android:layout_height="0dp"
+        android:id="@+id/gameCardImage"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
@@ -28,25 +29,24 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.571"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintVertical_bias="0.5" />
 
     <TextView
         android:id="@+id/gameTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
+        android:layout_marginTop="-20dp"
         android:text="Game Title"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@android:color/white"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+        app:layout_constraintStart_toEndOf="@+id/gameCardImage"
+        app:layout_constraintTop_toTopOf="@+id/gameCardImage" />
 
     <TextView
         android:id="@+id/gameDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="This is the description of the game"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="@android:color/secondary_text_dark"
@@ -54,7 +54,7 @@
         app:layout_constraintTop_toBottomOf="@+id/gameTitle" />
 
     <TextView
-        android:id="@+id/gameDescription3"
+        android:id="@+id/gameCardPlatform"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -66,16 +66,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/gameCardActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="Start"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:background="@color/startButton"
+        android:text="Start"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="@android:color/primary_text_dark"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
