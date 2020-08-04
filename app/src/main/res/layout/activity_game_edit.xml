@@ -140,11 +140,12 @@
 
     <RatingBar
         android:id="@+id/ratingBar"
-        style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
+        style="?android:attr/ratingBarStyleSmall"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:isIndicator="false"
+        android:progressBackgroundTint="#ffffff"
         app:layout_constraintBottom_toBottomOf="@+id/ratingTitle"
         app:layout_constraintStart_toEndOf="@+id/ratingTitle" />
 
