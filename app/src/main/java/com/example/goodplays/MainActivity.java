@@ -107,6 +107,9 @@ public class MainActivity extends AppCompatActivity {
             Button button = view
                     .findViewById(R.id.gameCardActionButton);
 
+            Button editButton = view
+                    .findViewById(R.id.editButton);
+
             switch (game.status) {
                 case PlayingNow:
                     button.setBackgroundColor(Color.RED);
@@ -117,7 +120,16 @@ public class MainActivity extends AppCompatActivity {
                     button.setText("Start");
                     break;
                 case Played:
-                    button.setText("Done");
+                    editButton.setVisibility(View.VISIBLE);
+                    button.setVisibility(View.GONE);
+                    editButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            android.content.Intent editGame = new android.content.Intent(getBaseContext(), game_edit.class);
+                            startActivity(editGame);
+                        }
+                    });
+                    //button.setText("Done");
                     button.setBackgroundColor(Color.GRAY);
                     button.setEnabled(false);
                     break;
