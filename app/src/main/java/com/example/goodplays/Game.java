@@ -29,6 +29,11 @@ public class Game {
     public Rating rating;
     public URL imageUrl;
 
+    //game edit values
+    public boolean favorite;
+    public int difficulty;
+    public String review;
+
     public Game(String title, String description, String platform, URL imageUrl) {
         this.id = UUID.randomUUID();
         this.title = title;
