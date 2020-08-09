@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingBottom="30dp">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -22,11 +23,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            android:orientation="vertical"
             android:id="@+id/nowPlayingLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/nowPlayingHeader" />
 
@@ -40,11 +41,11 @@
             app:layout_constraintTop_toBottomOf="@id/nowPlayingLinearLayout" />
 
         <LinearLayout
-            android:orientation="vertical"
             android:id="@+id/queueLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/queueHeader" />
 
@@ -58,11 +59,11 @@
             app:layout_constraintTop_toBottomOf="@id/queueLinearLayout" />
 
         <LinearLayout
-            android:orientation="vertical"
             android:id="@+id/playedLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/playedHeader" />
 
