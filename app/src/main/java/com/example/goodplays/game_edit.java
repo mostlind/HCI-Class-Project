@@ -1,5 +1,6 @@
 package com.example.goodplays;
 
+import android.arch.core.util.Function;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -9,7 +10,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -17,18 +20,38 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
-public class game_edit extends AppCompatActivity {
-    boolean globalFav;
+import java.util.ArrayList;
 
-    private class GameButtonListener implements View.OnClickListener {
+public class game_edit extends AppCompatActivity {
+    ArrayList<Function<Game, Game>> changes = new ArrayList<>();
+
+    private class SaveButtonListener implements View.OnClickListener {
         Game game;
-        GameButtonListener(Game game) {
+
+        public SaveButtonListener(Game game) {
             this.game = game;
         }
         @Override
         public void onClick(View v) {
-            game.favorite = true;
-            game.title = "blah";
+            for (Function<Game, Game> change : changes) {
+                change.apply(game);
+            }
+            android.content.Intent home = new android.content.Intent(getBaseContext(), MainActivity.class);
+            startActivity(home);
+        }
+    }
+
+    private class FavoriteToggledListener implements CompoundButton.OnCheckedChangeListener {
+
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, final boolean isChecked) {
+            changes.add(new Function<Game, Game>() {
+                @Override
+                public Game apply(Game input) {
+                    input.favorite = isChecked;
+                    return input;
+                }
+            });
         }
     }
 
@@ -49,16 +72,10 @@ public class game_edit extends AppCompatActivity {
         gameTitle.setText(curr_game.title);
         favoriteSwitch.setChecked(curr_game.favorite);
 
+        favoriteSwitch.setOnCheckedChangeListener(new FavoriteToggledListener());
 
-        save.setOnClickListener(new game_edit.GameButtonListener(curr_game));
+        save.setOnClickListener(new game_edit.SaveButtonListener(curr_game));
 
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                android.content.Intent home = new android.content.Intent(getBaseContext(), MainActivity.class);
-                startActivity(home);
-            }
-        });
 
         discard.setOnClickListener(new View.OnClickListener() {
             @Override

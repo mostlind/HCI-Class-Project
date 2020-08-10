@@ -29,4 +29,8 @@ public class GameList {
         }
         return gameHolder;
     }
+
+    public void setFavorite(int index, boolean value) {
+        games.get(index).favorite = value;
+    }
 }
