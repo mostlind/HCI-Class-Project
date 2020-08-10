@@ -16,7 +16,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ import static com.example.goodplays.R.color.startButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<Game> games = new ArrayList<>();
+    private ArrayList<Game> games = null;
     LinearLayout queueLayout;
     LinearLayout nowPlayingLayout;
     LinearLayout playedLayout;
@@ -35,16 +34,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        try {
-            games.add(new Game("Title", "Description", "XBOX", new URL("https://images.freeimages.com/images/large-previews/754/firework-final-display-1186309.jpg")));
-            games.add(new Game("Title 2", "Description", "XBOX", new URL("https://images.freeimages.com/images/large-previews/754/firework-final-display-1186309.jpg")));
-            games.add(new Game("Title 3", "Description", "XBOX", new URL("https://images.freeimages.com/images/large-previews/754/firework-final-display-1186309.jpg")));
-            games.add(new Game("Title 3", "Description", "XBOX", new URL("https://images.freeimages.com/images/large-previews/754/firework-final-display-1186309.jpg")));
-            games.add(new Game("Title 3", "Description", "XBOX", new URL("https://images.freeimages.com/images/large-previews/754/firework-final-display-1186309.jpg")));
-            games.add(new Game("Title 3", "Description", "XBOX", new URL("https://images.freeimages.com/images/large-previews/754/firework-final-display-1186309.jpg")));
-        } catch (MalformedURLException e) {
-            Log.e("welp", "onCreate: ", e);
-        }
+
+        games = GameList.getInstance().games;
 
         nowPlayingLayout = findViewById(R.id.nowPlayingLinearLayout);
         queueLayout = findViewById(R.id.queueLinearLayout);

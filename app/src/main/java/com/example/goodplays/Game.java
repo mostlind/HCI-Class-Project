@@ -1,10 +1,12 @@
 package com.example.goodplays;
 
+import java.io.Serializable;
 import java.net.URL;
 import java.util.Date;
 import java.util.UUID;
 
 public class Game {
+
     public enum Status {
         Queued,
         PlayingNow,
