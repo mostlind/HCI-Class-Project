@@ -131,12 +131,12 @@
         android:paddingEnd="5dp"
         android:paddingRight="5dp"
         android:paddingBottom="5dp"
-        android:textColor="#000000"
+        android:textColor="#80000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/difficultyNum"
         app:layout_constraintTop_toBottomOf="@+id/difficultyNum"
-        tools:text="test" />
+        tools:text="Your Review" />
 
     <RatingBar
         android:id="@+id/ratingBar"
