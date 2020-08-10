@@ -92,4 +92,18 @@
         app:layout_constraintBottom_toTopOf="@+id/gameCardActionButton"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <ImageButton
+        android:id="@+id/gameCardShareButton"
+        style="@android:style/Widget.DeviceDefault.ImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="4dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="Share button"
+        android:tint="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/gameDescription"
+        app:layout_constraintStart_toEndOf="@+id/gameTitle"
+        app:srcCompat="@drawable/ic_baseline_share_24" />
+
 </android.support.constraint.ConstraintLayout>

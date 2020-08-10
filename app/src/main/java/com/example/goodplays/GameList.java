@@ -17,11 +17,11 @@ public class GameList {
         if (gameHolder.games == null) {
             ArrayList<Game> games = new ArrayList<>();
             try {
-                games.add(new Game("Title", "Description", "XBOX", new URL("https://images.freeimages.com/images/large-previews/754/firework-final-display-1186309.jpg")));
-                games.add(new Game("Title 2", "Description", "XBOX", new URL("https://images.freeimages.com/images/large-previews/754/firework-final-display-1186309.jpg")));
-                games.add(new Game("Title 3", "Description", "XBOX", new URL("https://images.freeimages.com/images/large-previews/754/firework-final-display-1186309.jpg")));
-                games.add(new Game("Title 3", "Description", "XBOX", new URL("https://images.freeimages.com/images/large-previews/754/firework-final-display-1186309.jpg")));
-                games.add(new Game("Title 3", "Description", "XBOX", new URL("https://images.freeimages.com/images/large-previews/754/firework-final-display-1186309.jpg")));
+                games.add(new Game("Borderlands 3", "Description", "Stadia", new URL("https://images.freeimages.com/images/large-previews/754/firework-final-display-1186309.jpg")));
+                games.add(new Game("Orcs Must Die 3", "Description", "Stadia", new URL("https://images.freeimages.com/images/large-previews/754/firework-final-display-1186309.jpg")));
+                games.add(new Game("Division 2", "Description", "Stadia", new URL("https://images.freeimages.com/images/large-previews/754/firework-final-display-1186309.jpg")));
+                games.add(new Game("PUBG", "Description", "Stadia", new URL("https://images.freeimages.com/images/large-previews/754/firework-final-display-1186309.jpg")));
+                games.add(new Game("Title 3", "Description", "PC", new URL("https://images.freeimages.com/images/large-previews/754/firework-final-display-1186309.jpg")));
                 games.add(new Game("Title 3", "Description", "XBOX", new URL("https://images.freeimages.com/images/large-previews/754/firework-final-display-1186309.jpg")));
             } catch (MalformedURLException e) { }
 

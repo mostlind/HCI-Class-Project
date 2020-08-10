@@ -1,6 +1,7 @@
 package com.example.goodplays;
 
-import java.io.Serializable;
+import android.content.Intent;
+
 import java.net.URL;
 import java.util.Date;
 import java.util.UUID;
@@ -49,6 +50,25 @@ public class Game {
             case Played:
                 this.status =  Status.Played;
         }
+    }
 
+    public Intent getShareIntent() {
+        String action = "";
+        switch (this.status) {
+            case Queued:
+                action = "am planning to play";
+                break;
+            case PlayingNow:
+                action = "am playing";
+                break;
+            case Played:
+                action = "have played";
+        }
+        String stringToShare = "Hey! I " + action + " " + this.title + " on " + this.platform;
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "GoodPlays");
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, stringToShare);
+        return sharingIntent;
     }
 }

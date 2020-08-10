@@ -1,5 +1,6 @@
 package com.example.goodplays;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     private void addGamesToLayout(ArrayList<Game> games, LinearLayout layout) {
         layout.removeAllViews();
         int index = 0;
-        for (Game game : games) {
+        for (final Game game : games) {
             LayoutInflater inflater = getLayoutInflater();
             View view = inflater.inflate(R.layout.game_card, null);
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -101,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
             Button editButton = view
                     .findViewById(R.id.editButton);
+            ImageButton shareButton = view.findViewById(R.id.gameCardShareButton);
 
             switch (game.status) {
                 case PlayingNow:
@@ -132,6 +135,12 @@ public class MainActivity extends AppCompatActivity {
             }
 
             button.setOnClickListener(new GameButtonListener(game));
+            shareButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(Intent.createChooser(game.getShareIntent(), "Share via"));
+                }
+            });
 
             layout.addView(view);
             index++;
