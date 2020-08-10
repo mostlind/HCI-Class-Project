@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/cardBackground"
     tools:context=".game_edit">
 
 
@@ -40,6 +41,7 @@
         android:layout_height="wrap_content"
         android:text="This is the description of the game"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="@+id/gameTitle"
         app:layout_constraintTop_toBottomOf="@+id/gameTitle" />
 
@@ -61,6 +63,7 @@
         android:layout_marginTop="16dp"
         android:text="Game Title"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/gameCardImage"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -70,6 +73,7 @@
         android:layout_height="wrap_content"
         android:text="Added Aug 5, 2020"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/gameCardImage"
         app:layout_constraintStart_toStartOf="@+id/gameDescription" />
 
@@ -81,6 +85,7 @@
         android:layout_marginEnd="16dp"
         android:text="XBOX"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -91,6 +96,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="40dp"
         android:text="Rating:"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gameCardImage" />
 
@@ -101,32 +107,47 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="40dp"
         android:text="Review:"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/difficultyTitle" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
-        android:layout_width="271dp"
-        android:layout_height="36dp"
+        android:id="@+id/reviewText"
+        style="@style/Widget.AppCompat.EditText"
+        android:layout_width="270dp"
+        android:layout_height="250dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="60dp"
+        android:background="@drawable/border"
+        android:editable="true"
         android:ems="10"
+        android:enabled="true"
         android:gravity="start|top"
         android:inputType="textMultiLine"
         android:maxLines="30"
         android:minLines="30"
+        android:padding="5dp"
+        android:paddingStart="10dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp"
+        android:textColor="#80000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/difficultyNum"
-        app:layout_constraintTop_toBottomOf="@+id/difficultyNum" />
+        app:layout_constraintTop_toBottomOf="@+id/difficultyNum"
+        tools:text="Your Review" />
 
     <RatingBar
         android:id="@+id/ratingBar"
-        style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
+        style="?android:attr/ratingBarStyleSmall"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:isIndicator="false"
+        android:progressBackgroundTint="#ffffff"
         app:layout_constraintBottom_toBottomOf="@+id/ratingTitle"
         app:layout_constraintStart_toEndOf="@+id/ratingTitle" />
 
@@ -146,6 +167,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="40dp"
         android:text="Difficulty:"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switch1" />
 
@@ -156,6 +178,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="40dp"
         android:text="Favorite:"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ratingTitle" />
 
@@ -165,6 +188,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="/10"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/difficultyNum"
         app:layout_constraintTop_toBottomOf="@+id/switch1" />
 
@@ -174,8 +198,13 @@
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
+        android:editable="true"
         android:ems="10"
+        android:enabled="true"
         android:inputType="number"
+        android:maxLength="2"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
         app:layout_constraintStart_toEndOf="@+id/difficultyTitle"
         app:layout_constraintTop_toBottomOf="@+id/switch1" />
 

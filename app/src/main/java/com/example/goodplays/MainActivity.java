@@ -16,7 +16,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ import static com.example.goodplays.R.color.startButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<Game> games = new ArrayList<>();
+    private ArrayList<Game> games = null;
     LinearLayout queueLayout;
     LinearLayout nowPlayingLayout;
     LinearLayout playedLayout;
@@ -35,16 +34,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        try {
-            games.add(new Game("Title", "Description", "XBOX", new URL("https://images.freeimages.com/images/large-previews/754/firework-final-display-1186309.jpg")));
-            games.add(new Game("Title 2", "Description", "XBOX", new URL("https://images.freeimages.com/images/large-previews/754/firework-final-display-1186309.jpg")));
-            games.add(new Game("Title 3", "Description", "XBOX", new URL("https://images.freeimages.com/images/large-previews/754/firework-final-display-1186309.jpg")));
-            games.add(new Game("Title 3", "Description", "XBOX", new URL("https://images.freeimages.com/images/large-previews/754/firework-final-display-1186309.jpg")));
-            games.add(new Game("Title 3", "Description", "XBOX", new URL("https://images.freeimages.com/images/large-previews/754/firework-final-display-1186309.jpg")));
-            games.add(new Game("Title 3", "Description", "XBOX", new URL("https://images.freeimages.com/images/large-previews/754/firework-final-display-1186309.jpg")));
-        } catch (MalformedURLException e) {
-            Log.e("welp", "onCreate: ", e);
-        }
+
+        games = GameList.getInstance().games;
 
         nowPlayingLayout = findViewById(R.id.nowPlayingLinearLayout);
         queueLayout = findViewById(R.id.queueLinearLayout);
@@ -80,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void addGamesToLayout(ArrayList<Game> games, LinearLayout layout) {
         layout.removeAllViews();
+        int index = 0;
         for (Game game : games) {
             LayoutInflater inflater = getLayoutInflater();
             View view = inflater.inflate(R.layout.game_card, null);
@@ -107,6 +99,9 @@ public class MainActivity extends AppCompatActivity {
             Button button = view
                     .findViewById(R.id.gameCardActionButton);
 
+            Button editButton = view
+                    .findViewById(R.id.editButton);
+
             switch (game.status) {
                 case PlayingNow:
                     button.setBackgroundColor(Color.RED);
@@ -117,7 +112,20 @@ public class MainActivity extends AppCompatActivity {
                     button.setText("Start");
                     break;
                 case Played:
-                    button.setText("Done");
+                    editButton.setVisibility(View.VISIBLE);
+                    button.setVisibility(View.GONE);
+                    final int finalIndex = index;
+                    editButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Bundle gameData = new Bundle();
+                            gameData.putInt("index", finalIndex);
+                            android.content.Intent editGame = new android.content.Intent(getBaseContext(), game_edit.class);
+                            editGame.putExtras(gameData);
+                            startActivity(editGame);
+                        }
+                    });
+                    //button.setText("Done");
                     button.setBackgroundColor(Color.GRAY);
                     button.setEnabled(false);
                     break;
@@ -126,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
             button.setOnClickListener(new GameButtonListener(game));
 
             layout.addView(view);
+            index++;
         }
     }
 
