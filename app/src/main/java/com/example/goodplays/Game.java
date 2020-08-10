@@ -33,8 +33,8 @@ public class Game {
 
     //game edit values
     public boolean favorite;
-    public int difficulty;
-    public String review;
+    public String difficulty = "0";
+    public String review = "Your Review";
 
     public Game(String title, String description, String platform, URL imageUrl) {
         this.id = UUID.randomUUID();
