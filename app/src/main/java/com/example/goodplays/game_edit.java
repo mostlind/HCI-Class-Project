@@ -15,6 +15,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
+import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -40,6 +41,12 @@ public class game_edit extends AppCompatActivity {
             for (Function<Game, Game> change : changes) {
                 change.apply(game);
             }
+            String difficulty = ((EditText) findViewById(R.id.difficultyNum)).getText().toString();
+            String review = ((EditText) findViewById(R.id.reviewText)).getText().toString();
+
+            game.review = review;
+            game.difficulty = difficulty;
+
             android.content.Intent home = new android.content.Intent(getBaseContext(), MainActivity.class);
             startActivity(home);
         }
@@ -59,6 +66,21 @@ public class game_edit extends AppCompatActivity {
         }
     }
 
+    private class RatingChangedListener implements RatingBar.OnRatingBarChangeListener {
+        @Override
+        public void onRatingChanged(RatingBar ratingBar, final float rating, boolean fromUser) {
+            changes.add(new Function<Game, Game>() {
+                @Override
+                public Game apply(Game input) {
+
+                   input.rating = rating;
+
+                    return input;
+                }
+            });
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_game_edit);
@@ -66,6 +88,7 @@ public class game_edit extends AppCompatActivity {
         Button discard = (Button) findViewById(R.id.discardButton);
         Button save = (Button) findViewById(R.id.saveButton);
         Switch favoriteSwitch = (Switch) findViewById(R.id.switch1);
+        RatingBar ratingBar = findViewById(R.id.ratingBar);
         TextView gameTitle = (TextView) findViewById(R.id.gameTitle);
         TextView gameDescription = (TextView) findViewById(R.id.gameDescription);
         TextView gamePlatform = (TextView) findViewById(R.id.gameCardPlatform);
@@ -81,6 +104,7 @@ public class game_edit extends AppCompatActivity {
         Game curr_game = GameList.getInstance().games.get(index);
 
         gameTitle.setText(curr_game.title);
+        gameDescription.setText(curr_game.description);
         favoriteSwitch.setChecked(curr_game.favorite);
         Uri uri = Uri.parse(curr_game.imageUrl.toString());
         gameImage.setImageURI(uri);
@@ -88,10 +112,13 @@ public class game_edit extends AppCompatActivity {
         gameDate.setText(curr_game.dateAdded.toString());
         gameDifficulty.setText(curr_game.difficulty);
         gameReview.setText(curr_game.review);
+        ratingBar.setRating(curr_game.rating);
 
         favoriteSwitch.setOnCheckedChangeListener(new FavoriteToggledListener());
+        ratingBar.setOnRatingBarChangeListener(new RatingChangedListener());
 
-        save.setOnClickListener(new game_edit.SaveButtonListener(curr_game));
+        save.setOnClickListener(new game_edit.SaveButtonListener(
+                curr_game));
 
         discard.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -13,22 +13,13 @@ public class Game {
         Played
     }
 
-    public enum Rating {
-        NotRated,
-        OneStar,
-        TwoStars,
-        ThreeStars,
-        FourStars,
-        FiveStars
-    }
-
     public UUID id;
     public String title;
     public String description;
     public Date dateAdded;
     public String platform;
     public Status status;
-    public Rating rating;
+    public Float rating;
     public URL imageUrl;
 
     //game edit values
@@ -43,12 +34,8 @@ public class Game {
         this.dateAdded = new Date();
         this.platform = platform;
         this.status = Status.Queued;
-        this.rating = Rating.NotRated;
+        this.rating = 0.0f;
         this.imageUrl = imageUrl;
-    }
-
-    public void setRating(Rating rating) {
-        this.rating = rating;
     }
 
     public void progressStatus() {
