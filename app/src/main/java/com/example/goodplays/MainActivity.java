@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void addGamesToLayout(ArrayList<Game> games, LinearLayout layout) {
         layout.removeAllViews();
+        int index = 0;
         for (Game game : games) {
             LayoutInflater inflater = getLayoutInflater();
             View view = inflater.inflate(R.layout.game_card, null);
@@ -113,10 +114,14 @@ public class MainActivity extends AppCompatActivity {
                 case Played:
                     editButton.setVisibility(View.VISIBLE);
                     button.setVisibility(View.GONE);
+                    final int finalIndex = index;
                     editButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            Bundle gameData = new Bundle();
+                            gameData.putInt("index", finalIndex);
                             android.content.Intent editGame = new android.content.Intent(getBaseContext(), game_edit.class);
+                            editGame.putExtras(gameData);
                             startActivity(editGame);
                         }
                     });
@@ -129,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
             button.setOnClickListener(new GameButtonListener(game));
 
             layout.addView(view);
+            index++;
         }
     }
 
